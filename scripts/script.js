@@ -75,26 +75,26 @@ Increment the humanScore or computerScore variable based on the round winner.
 */
 
 function playRound (humanChoice, computerChoice) {
-    if (humanChoice == computerChoice) {
+    if (humanChoice == computerChoice) { // Identify ties
         roundWinner = "nobody";
     } else if (humanChoice == "rock" && computerChoice == "paper") {
         roundWinner = "computer";
-        computerScore = computerScore + 1;
+        computerScore++;
     } else if(humanChoice == "rock" && computerChoice == "scissors") {
         roundWinner = "human";
-        humanScore = humanScore + 1;
+        humanScore++;
     } else if (humanChoice == "paper" && computerChoice == "scissors") {
         roundWinner = "computer";
-        computerScore = computerScore + 1;
+        computerScore++;
     } else if(humanChoice == "paper" && computerChoice == "rock") {
         roundWinner = "human";
-        humanScore = humanScore + 1;
+        humanScore++;
     } else if (humanChoice == "scissors" && computerChoice == "rock") {
         roundWinner = "computer";
-        computerScore = computerScore + 1;
+        computerScore++;
     } else if(humanChoice == "scissors" && computerChoice == "paper") {
         roundWinner = "human";
-        humanScore = humanScore + 1;
+        humanScore++;
     }
 
 }
