@@ -20,11 +20,11 @@ const playAgainSection = document.querySelector("#playAgain");
 
 // List of constant variables for copy, colors, etc.
 const defaultFontColor = '#2f4f4f';
-const playerWinHeadline = "You won the round!";
-const computerWinHeadline = "Computer won the round!"
-const playerLossHeadline = "You lost the round!"
-const computerLossHeadline = "Computer lost the round!"
-const tieHeadline = "You tied the round!"
+const playerWinHeadline = "You won!";
+const computerWinHeadline = "Computer won!"
+const playerLossHeadline = "You lost!"
+const computerLossHeadline = "Computer lost!"
+const tieHeadline = "You tied!"
 const winFontColor = '#7cb69d';
 const lossFontColor = '#f69697';
 
@@ -36,8 +36,8 @@ let roundWinner = "";
 //
 
 //Setup initial score copy + buttons
-playerScoreCopy.textContent = `Current Score: ${humanScore}`;
-computerScoreCopy.textContent = `Current Score: ${computerScore}`;
+playerScoreCopy.textContent = `Score: ${humanScore}`;
+computerScoreCopy.textContent = `Score: ${computerScore}`;
 
 // Use the .forEach method to iterate through each button on the page
 buttons.forEach((button) => {
@@ -110,8 +110,8 @@ function updateRoundCopy(){
     computerLastSelection.textContent = computerChoice;
     
     // Update the current scores
-    playerScoreCopy.textContent = `Current Score: ${humanScore}`;
-    computerScoreCopy.textContent = `Current Score: ${computerScore}`;
+    playerScoreCopy.textContent = `Score: ${humanScore}`;
+    computerScoreCopy.textContent = `Score: ${computerScore}`;
 
     // Update the copy per round winner including text and colors
     if (roundWinner == "human") {
