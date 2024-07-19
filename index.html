@@ -2,12 +2,52 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Rock, Paper, Scissors!</title>
+    <link rel="stylesheet" href="resources/styles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.3.2/spin.min.js"></script>
   </head>
   <body>
-    <h1>check the console plz!</h1>
+    <section id="playAgain"></section>
+    <section id="navBar">
+      <h1>Sten, Papir, Staks « Best to 5!</h1>
+    </section>
+    <section id="gameplay">
+      <section id="player">
+        <div id="player-content"></div>
+          <h1 id="player-title">You</h1>
+          <h2 id="playerScoreCopy"></h2>
+          <h2 id="playerHeadline">Last Selection: </h2>
+          <h2 id="playerLastSelection"></h2>
+        <div id="player-actions"></div>
+        <button id="player-rock-selection">
+          <h3>Sten</h2>
+          <p>"Rock"</p>
+        </button>
+        <button id="player-paper-selection">
+          <h3>Papir</h2>
+          <p>"Paper"</p>
+        </button>
+        <button id="player-scissors-selection">
+          <h3>Staks</h2>
+          <p>"Scissors"</p>
+          </button>
+        <div id="player-selection-result"></div>
+      </section>
+      <section id="computer">
+        <div id="computer-content"></div>
+          <h1 id="computer-title">Computer</h1>
+          <h2 id="computerScoreCopy"></h2>
+          <h2 id="computerHeadline">Last Selection: </h2>
+          <h2 id="computerLastSelection"></h2>
+      </section>
+    </section>
     <script src="scripts/script.js"></script>
+    <footer>
+      <div>
+          <p>Copyright © bjake5.github.io 2024</p>
+      </div>
+  </footer>
   </body>
 </html>

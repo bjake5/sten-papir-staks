@@ -1,0 +1,61 @@
+* {
+    color:darkslategrey;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding: 0px;
+}
+
+h1 {
+    font-size: 40px;
+}
+
+body {
+    height: 100%;
+}
+
+#gameplay {
+    display: flex;
+    justify-content: center;
+    width: 100%
+}
+
+#navBar {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+#player,
+#computer {
+    flex: 1;
+    width: 50%;
+    text-align: center;
+    align-content: center;
+}
+
+button {
+    flex: 1;
+    font-size: 20px;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5%;
+    border: 3px solid;
+    border-color: darkslategray;
+    text-align: center;
+}
+
+#playerLastSelection, #computerLastSelection {
+    font-size: 50px;
+}
+
+#playAgain {
+    flex: 1;
+    text-align: center;
+    width: 100%;}
+
+footer {
+    flex: 1;
+    text-align: center;
+    width: 100%;
+}
