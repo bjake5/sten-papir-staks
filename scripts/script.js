@@ -1,14 +1,63 @@
-/*
 
-Write the logic to get the computer choice
-Your game will be played against the computer. You will write a function that randomly returns “rock”, “paper” or “scissors”.
+// List of player object IDs from HTML page 
+const playerSection = document.querySelector("#player");
+const playerRockButton = document.querySelector("#player-rock-selection");
+const playerPaperButton = document.querySelector("#player-paper-selection");
+const playerScissorsButton = document.querySelector("#player-scissors-selection");
+const playerScoreCopy = document.querySelector("#playerScoreCopy");
+const playerHeadline = document.querySelector("#playerHeadline");
+const playerLastSelection = document.querySelector("#playerLastSelection");
+const buttons = document.querySelectorAll("button");
 
-Create a new function named getComputerChoice.
-Write the code so that getComputerChoice will randomly return one of the following string values: “rock”, “paper” or “scissors”.
-Hint: The Math.random method returns a random number that’s greater than or equal to 0 and less than 1. Think about how you can use this to conditionally return one of the multiple choices.
-Test that your function returns what you expect using console.log or the browser developer tools before advancing to the next step.
+//List of computer object IDs from HTML page
+const computerSection = document.querySelector("#computer");
+const computerHeadline = document.querySelector("#computerHeadline");
+const computerLastSelection = document.querySelector("#computerLastSelection");
+const computerScoreCopy = document.querySelector("#computerScoreCopy");
 
-*/
+// Section for play again button after game is finished
+const playAgainSection = document.querySelector("#playAgain");
+
+// List of constant variables for copy, colors, etc.
+const defaultFontColor = '#2f4f4f';
+const playerWinHeadline = "You won the round!";
+const computerWinHeadline = "Computer won the round!"
+const playerLossHeadline = "You lost the round!"
+const computerLossHeadline = "Computer lost the round!"
+const tieHeadline = "You tied the round!"
+const winFontColor = '#7cb69d';
+const lossFontColor = '#f69697';
+
+// Temporary variables for gameplay
+let humanChoice;
+let humanScore = 0;
+let computerScore = 0;
+let roundWinner = "";
+//
+
+//Setup initial score copy + buttons
+playerScoreCopy.textContent = `Current Score: ${humanScore}`;
+computerScoreCopy.textContent = `Current Score: ${computerScore}`;
+
+// Use the .forEach method to iterate through each button on the page
+buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+        if(humanScore >= 5 || computerScore >= 5) { // Check if the game is over before starting another round
+            return false;
+        } else { // Map button IDs to human choice variable for gameplay
+            if(button.id == "player-rock-selection") { humanChoice = "rock" };
+            if(button.id == "player-paper-selection") { humanChoice = "paper" }; 
+            if(button.id == "player-scissors-selection") { humanChoice = "scissors" }; 
+
+            let humanSelection = humanChoice; // Map human choice variable into an argument
+            let computerSelection = getComputerChoice(); // Get the computer choice for gameplay
+            playRound(humanSelection,computerSelection); // Function to play the round
+        };
+        if(humanScore >= 5 || computerScore >= 5) { // Check if the game is over after round
+            finishGame(); // Function to finish the game for code cleanliness
+        } 
+    });
+});
 
 function getComputerChoice() {
     const rawNumber = Math.random(); // The raw number is generated here.
@@ -24,58 +73,12 @@ function getComputerChoice() {
         computerChoice = "rock"; // Numbers between 0-1 inclusive will map to scissors.
     } else {
         alert("error, too low!") // Exception if the number is below 0 (not expected).
-    }
+    };
     return computerChoice;
-}
-
-/*
-Write the logic to get the human choice
-Your game will be played by a human player. You will write a function that takes the user choice and returns it.
-
-Create a new function named getHumanChoice.
-Write the code so that getHumanChoice will return one of the valid choices depending on what the user inputs.
-Hint: Use the prompt method to get the user’s input.
-Test what your function returns by using console.log.
-*/
-const choices = ["rock", "paper", "scissors"];
-
-function getHumanChoice () {
-    const rawHumanInput = prompt("Please make your selection: rock, paper or scissors?");
-    const mappedHumanInput = rawHumanInput.trim().toLowerCase();
-    
-    if (choices.includes(mappedHumanInput)) {
-        humanChoice = mappedHumanInput;
-        return humanChoice;
-    } else {
-        alert ("invalid choice, try again!")
-        getHumanChoice();
-    }
-}
-
-/*
-Declare the players score variables
-Your game will keep track of the players score. You will write variables to keep track of the players score.
-
-Create two new variables named humanScore and computerScore in the global scope.
-Initialize those variables with the value of 0.
-*/
-
-let humanScore = 0;
-let computerScore = 0;
-
-/*
-Write the logic to play a single round
-Your game will be played round by round. You will write a function that takes the human and computer player choices as arguments, plays a single round, increments the round winner’s score and logs a winner announcement.
-
-Create a new function named playRound.
-Define two parameters for playRound: humanChoice and computerChoice. Use these two parameters to take the human and computer choices as arguments.
-Make your function’s humanChoice parameter case-insensitive so that players can input “rock”, “ROCK”, “RocK”, or other variations.
-Write the code for your playRound function to console.log a string value representing the round winner, such as: “You lose! Paper beats Rock”.
-Increment the humanScore or computerScore variable based on the round winner.
-*/
+};
 
 function playRound (humanChoice, computerChoice) {
-    if (humanChoice == computerChoice) { // Identify ties
+    if (humanChoice == computerChoice) { // Identify ties first, then run algorithm
         roundWinner = "nobody";
     } else if (humanChoice == "rock" && computerChoice == "paper") {
         roundWinner = "computer";
@@ -95,52 +98,67 @@ function playRound (humanChoice, computerChoice) {
     } else if(humanChoice == "scissors" && computerChoice == "paper") {
         roundWinner = "human";
         humanScore++;
-    }
-
-}
-
-/*
-Write the logic to play the entire game
-Your game will play 5 rounds. You will write a function named playGame that calls playRound to play 5 rounds, keeps track of the scores and declares a winner at the end.
-
-Create a new function named playGame.
-Move your playRound function and score variables so that they’re declared inside of the new playGame function
-Play 5 rounds by calling playRound 5 times.
-Hint: When you assign a function call to a variable, the return value of that function is assigned to the variable. Accessing the variable afterward will only provide the assigned value; it doesn’t recall the function. You need to recall the choice functions to get new choices for each round.
-Re-work your previous functions or create more helper functions if necessary. Specifically, you may want to change the return values to something more useful.
-If you already know about loops, you can use them. If not, don’t worry! Loops will be covered in the next lesson.
-*/
-
-playGame ();
-
-function playGame () {
-    for(let i = 5; i > 0; i--) {
-        console.log("Games Remaining: " + i);
-        let humanSelection = getHumanChoice();
-        let computerSelection = getComputerChoice();
-        playRound(humanSelection, computerSelection);
+    };
+    updateRoundCopy();
+};    
     
-        if (roundWinner == "human") {
-            console.log(`You win! ${humanChoice} beats ${computerChoice}!`);
-        } else if (roundWinner == "computer") {
-            console.log(`You lose! ${computerChoice} beats ${humanChoice}!`);
-        } else {
-            console.log(`You tied! ${computerChoice} ties ${humanChoice}!`);
-        }
-
-        console.log("Human Wins: " + humanScore + " | " + "Computer Wins: " + computerScore);
-    }
+// Update the copy across the user interface
+function updateRoundCopy(){
     
-    if(humanScore > computerScore) {
-        gameWinner = "human";
-        alert(`The human wins! :) ${humanScore} games to ${computerScore} games!`);
-    } else if (computerScore > humanScore) {
-        gameWinner = "computer";
-        alert(`The computer wins! :( ${computerScore} games to ${humanScore} games!`);
+    // Update the copy with what the last selection was
+    playerLastSelection.textContent = humanChoice;
+    computerLastSelection.textContent = computerChoice;
+    
+    // Update the current scores
+    playerScoreCopy.textContent = `Current Score: ${humanScore}`;
+    computerScoreCopy.textContent = `Current Score: ${computerScore}`;
+
+    // Update the copy per round winner including text and colors
+    if (roundWinner == "human") {
+        playerHeadline.style.color = winFontColor;
+        playerLastSelection.style.color = winFontColor;
+        computerHeadline.style.color = lossFontColor;
+        computerLastSelection.style.color = lossFontColor;
+        playerHeadline.textContent = playerWinHeadline;
+        computerHeadline.textContent = computerLossHeadline;
+    } else if (roundWinner == "computer") {
+        playerHeadline.style.color = lossFontColor;
+        playerLastSelection.style.color = lossFontColor;
+        computerHeadline.style.color = winFontColor;
+        computerLastSelection.style.color = winFontColor;
+        playerHeadline.textContent = playerLossHeadline;
+        computerHeadline.textContent = computerWinHeadline;
     } else {
-        gameWinner = "nobody";
-        alert(`Tie! ${computerScore} games to ${humanScore} games!`);
+        playerHeadline.style.color = defaultFontColor;
+        playerLastSelection.style.color = defaultFontColor;
+        computerHeadline.style.color = defaultFontColor;
+        computerLastSelection.style.color = defaultFontColor;
+        playerHeadline.textContent = tieHeadline;
+        computerHeadline.textContent = tieHeadline;
+    };
+};
+
+// Update interface to show final score, declare winner, and add Play again? button
+function finishGame() {
+    if(humanScore > computerScore) {
+        playerSection.style.backgroundColor = winFontColor;
+        playerLastSelection.style.color = defaultFontColor;
+        playerHeadline.textContent = "\u{1F3C6}";
+        computerHeadline.textContent = "Computer lost the game!"
+
+    } else {
+        computerSection.style.backgroundColor = winFontColor;
+        computerLastSelection.style.color = defaultFontColor;
+        computerHeadline.textContent = "\u{1F3C6}";
+        playerHeadline.textContent = "Player lost the game!"
     }
-    console.log(`The game winner is the ${gameWinner}!`);
-    return gameWinner;
+    const playAgainButton = document.createElement("button");
+    playAgainSection.appendChild(playAgainButton);
+    playAgainButton.style.color = defaultFontColor;
+    playAgainButton.textContent = "Play again?";
+
+    // Reload page onClick Play again? button
+    playAgainButton.addEventListener("click", () => {
+        location.reload(true);
+    });
 }
