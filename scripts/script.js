@@ -144,12 +144,14 @@ function finishGame() {
         playerSection.style.backgroundColor = winFontColor;
         playerLastSelection.style.color = defaultFontColor;
         playerHeadline.textContent = "\u{1F3C6}";
+        playerHeadline.style.fontSize = "50psx";
         computerHeadline.textContent = "Computer lost the game!"
 
     } else {
         computerSection.style.backgroundColor = winFontColor;
         computerLastSelection.style.color = defaultFontColor;
         computerHeadline.textContent = "\u{1F3C6}";
+        computerHeadline.style.fontSize = "50px";
         playerHeadline.textContent = "Player lost the game!"
     }
     const playAgainButton = document.createElement("button");
