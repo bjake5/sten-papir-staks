@@ -144,15 +144,15 @@ function finishGame() {
         playerSection.style.backgroundColor = winFontColor;
         playerLastSelection.style.color = defaultFontColor;
         playerHeadline.textContent = "\u{1F3C6}";
-        playerHeadline.style.fontSize = "50psx";
+        playerHeadline.style.fontSize = "70px";
         computerHeadline.textContent = "Computer lost the game!"
 
     } else {
         computerSection.style.backgroundColor = winFontColor;
         computerLastSelection.style.color = defaultFontColor;
         computerHeadline.textContent = "\u{1F3C6}";
-        computerHeadline.style.fontSize = "50px";
-        playerHeadline.textContent = "Player lost the game!"
+        computerHeadline.style.fontSize = "70px";
+        playerHeadline.textContent = "You lost the game!"
     }
     const playAgainButton = document.createElement("button");
     playAgainSection.appendChild(playAgainButton);
