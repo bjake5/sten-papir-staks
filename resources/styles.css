@@ -24,18 +24,26 @@ body {
     width: 100%
 }
 
-#navBar {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-}
-
-#player,
-#computer {
+#player-title,
+#computer-title {
     flex: 1;
     width: 50%;
     text-align: center;
     align-content: center;
+}
+
+#player-actions,
+#computer-actions {
+    flex: 1;
+    width: 50%;
+    text-align: center;
+    align-content: center;
+}
+
+#navBar {
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
 
 button {
@@ -57,6 +65,10 @@ button {
     flex: 1;
     text-align: center;
     width: 100%;}
+
+#playAgain button {
+    font-size: 30px;
+}    
 
 footer {
     flex: 1;

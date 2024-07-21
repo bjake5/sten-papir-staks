@@ -1,19 +1,21 @@
 
 // List of player object IDs from HTML page 
-const playerSection = document.querySelector("#player");
+const playerTitle = document.querySelector("#player-title");
 const playerRockButton = document.querySelector("#player-rock-selection");
 const playerPaperButton = document.querySelector("#player-paper-selection");
 const playerScissorsButton = document.querySelector("#player-scissors-selection");
 const playerScoreCopy = document.querySelector("#playerScoreCopy");
 const playerHeadline = document.querySelector("#playerHeadline");
 const playerLastSelection = document.querySelector("#playerLastSelection");
+const playerActions = document.querySelector("#player-actions");
 const buttons = document.querySelectorAll("button");
 
 //List of computer object IDs from HTML page
-const computerSection = document.querySelector("#computer");
+const computerTitle = document.querySelector("#computer-title");
 const computerHeadline = document.querySelector("#computerHeadline");
 const computerLastSelection = document.querySelector("#computerLastSelection");
 const computerScoreCopy = document.querySelector("#computerScoreCopy");
+const computerActions = document.querySelector("#computer-actions");
 
 // Section for play again button after game is finished
 const playAgainSection = document.querySelector("#playAgain");
@@ -141,24 +143,29 @@ function updateRoundCopy(){
 // Update interface to show final score, declare winner, and add Play again? button
 function finishGame() {
     if(humanScore > computerScore) {
-        playerSection.style.backgroundColor = winFontColor;
+        playerTitle.style.backgroundColor = winFontColor;
+        playerActions.style.backgroundColor = winFontColor;
         playerLastSelection.style.color = defaultFontColor;
         playerHeadline.textContent = "\u{1F3C6}";
         playerHeadline.style.fontSize = "40px";
         computerHeadline.textContent = "Computer lost the game!"
 
     } else {
-        computerSection.style.backgroundColor = winFontColor;
+        computerTitle.style.backgroundColor = winFontColor;
+        computerActions.style.backgroundColor = winFontColor;
         computerLastSelection.style.color = defaultFontColor;
         computerHeadline.textContent = "\u{1F3C6}";
         computerHeadline.style.fontSize = "40px";
         playerHeadline.textContent = "You lost the game!"
     }
+    playerRockButton.remove();
+    playerPaperButton.remove();
+    playerScissorsButton.remove();
     const playAgainButton = document.createElement("button");
     playAgainSection.appendChild(playAgainButton);
     playAgainButton.style.color = defaultFontColor;
     playAgainButton.textContent = "Play again?";
-
+    
     // Reload page onClick Play again? button
     playAgainButton.addEventListener("click", () => {
         location.reload(true);

@@ -9,18 +9,28 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.3.2/spin.min.js"></script>
   </head>
   <body>
-    <section id="playAgain"></section>
     <section id="navBar">
-      <h1>Sten, Papir, Staks « Best to 5!</h1>
+      <h1>Sten, Papir, Staks « First to 5!</h1>
     </section>
     <section id="gameplay">
-      <section id="player">
+      <section id="player-title">
         <div id="player-content"></div>
-          <h1 id="player-title">You</h1>
+          <h1 id="player-name">You</h1>
           <h2 id="playerScoreCopy"></h2>
-          <h2 id="playerHeadline">Make a selection</h2>
           <h2 id="playerLastSelection"></h2>
+          <h2 id="playerHeadline">Make a selection</h2>
         <div id="player-actions"></div>
+      </section>
+      <section id="computer-title">
+        <div id="computer-content"></div>
+          <h1 id="computer-name">Computer</h1>
+          <h2 id="computerScoreCopy"></h2>
+          <h2 id="computerLastSelection"></h2>
+          <h2 id="computerHeadline">Make a selection</h2>
+      </section>
+    </section>  
+    <section id="actions">
+      <section id="player-actions">
         <button id="player-rock-selection">
           <h3>Sten</h2>
           <p>"Rock"</p>
@@ -35,14 +45,10 @@
           </button>
         <div id="player-selection-result"></div>
       </section>
-      <section id="computer">
-        <div id="computer-content"></div>
-          <h1 id="computer-title">Computer</h1>
-          <h2 id="computerScoreCopy"></h2>
-          <h2 id="computerHeadline">Make a selection</h2>
-          <h2 id="computerLastSelection"></h2>
-      </section>
+      <section id="computer-actions">
     </section>
+    <section id="playAgain"></section>
+    </body>
     <script src="scripts/script.js"></script>
     <footer>
       <div>
