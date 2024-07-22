@@ -24,8 +24,8 @@ body {
     width: 100%
 }
 
-#player-title,
-#computer-title {
+#player,
+#computer {
     flex: 1;
     width: 50%;
     text-align: center;
@@ -40,7 +40,7 @@ body {
     align-content: center;
 }
 
-#navBar {
+#header {
     display: flex;
     justify-content: center;
     width: 100%;
@@ -57,17 +57,22 @@ button {
     text-align: center;
 }
 
-#playerLastSelection, #computerLastSelection {
+#player-content-last-selection, #computer-content-last-selection {
     font-size: 30px;
 }
 
-#playAgain {
+#player-content-game-result, #computer-content-game-result {
+    font-size: 40px;
+}
+
+#play-again {
     flex: 1;
     text-align: center;
     width: 100%;}
 
-#playAgain button {
+#play-again button {
     font-size: 30px;
+    margin: 20px;
 }    
 
 footer {
